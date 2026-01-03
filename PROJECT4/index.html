@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENTIENT // EFFICIENT-DET</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js" crossorigin="anonymous"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-red-500 font-mono h-screen overflow-hidden flex flex-col items-center justify-center">
+
+    <div class="fixed inset-0 pointer-events-none z-20 crt-lines">
+        <div class="absolute top-8 left-8 w-24 h-24 border-l-4 border-t-4 border-red-600 rounded-tl-xl"></div>
+        <div class="absolute top-8 right-8 w-24 h-24 border-r-4 border-t-4 border-red-600 rounded-tr-xl"></div>
+        <div class="absolute bottom-8 left-8 w-24 h-24 border-l-4 border-b-4 border-red-600 rounded-bl-xl"></div>
+        <div class="absolute bottom-8 right-8 w-24 h-24 border-r-4 border-b-4 border-red-600 rounded-br-xl"></div>
+        
+        <div class="absolute top-6 left-1/2 -translate-x-1/2 text-center">
+            <h1 class="text-2xl font-bold tracking-[0.5em] text-white drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]">SENTIENT</h1>
+            <p id="status" class="text-xs text-red-500 mt-2 bg-black border border-red-900 px-2 py-1">SYSTEM STANDBY</p>
+        </div>
+    </div>
+
+    <div class="relative z-10 border border-red-900/40 bg-gray-900/80">
+        <video id="video" class="absolute inset-0 w-full h-full object-cover -z-10" autoplay playsinline muted></video>
+        <canvas id="canvas" class="block"></canvas>
+    </div>
+
+    <div id="startScreen" class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center flex-col">
+        <button onclick="enableCam()" class="px-10 py-4 bg-red-600 hover:bg-white hover:text-black text-white font-bold tracking-widest transition-all clip-path-polygon">
+            INITIALIZE EFFICIENT-DET
+        </button>
+        <p class="mt-4 text-gray-500 text-[10px] uppercase tracking-widest">Model: EfficientDet-Lite2 (Float32)</p>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
