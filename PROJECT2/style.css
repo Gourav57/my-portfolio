@@ -1,0 +1,75 @@
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #050505;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #000; 
+}
+::-webkit-scrollbar-thumb {
+    background: #14532d; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #166534; 
+}
+
+/* CRT Screen Effect */
+.crt-overlay {
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.25) 50%
+    ), linear-gradient(
+        90deg, 
+        rgba(255, 0, 0, 0.06), 
+        rgba(0, 255, 0, 0.02), 
+        rgba(0, 0, 255, 0.06)
+    );
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+/* Text Glitch Animation */
+.glitch-text {
+    position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111827;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 #00ff00;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 #ff00ff;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(13px, 9999px, 81px, 0); }
+    5% { clip: rect(87px, 9999px, 96px, 0); }
+    100% { clip: rect(2px, 9999px, 20px, 0); }
+}
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(65px, 9999px, 12px, 0); }
+    5% { clip: rect(23px, 9999px, 5px, 0); }
+    100% { clip: rect(45px, 9999px, 86px, 0); }
+}
