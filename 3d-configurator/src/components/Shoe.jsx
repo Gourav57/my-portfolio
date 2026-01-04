@@ -2,7 +2,7 @@ import { useGLTF } from '@react-three/drei'
 import { useStore } from '../store/useStore'
 
 export default function Shoe() {
-  const { nodes, materials } = useGLTF('/shoe-draco.glb')
+  const { nodes, materials } = useGLTF('./shoe-draco.glb')
   const colors = useStore((state) => state.colors)
 
   return (
