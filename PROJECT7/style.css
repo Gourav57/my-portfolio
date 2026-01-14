@@ -1,0 +1,343 @@
+/* --- RESET & BASE --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+:root {
+    --theme-color: #FFD66F; 
+    --theme-color-glow: rgba(255, 214, 111, 0.5);
+}
+
+body {
+    background-color: #1a1a1a;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px; 
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- LAMP COMPONENTS --- */
+.lamp-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 50px;
+    left: -90px;
+}
+
+.lamp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.lamp-shade {
+    width: 140px;
+    height: 100px;
+    background: linear-gradient(90deg, #333 0%, #555 50%, #333 100%);
+    border-radius: 70px 70px 0 0;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: all 0.3s;
+}
+
+.lamp-shade::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 20px;
+    background: #222;
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: inset 0 5px 10px rgba(0,0,0,0.8);
+}
+
+.lamp-stand {
+    width: 12px;
+    height: 150px;
+    background: linear-gradient(90deg, #111, #444, #111);
+    z-index: 4;
+    margin-top: -5px;
+}
+
+.lamp-base {
+    width: 80px;
+    height: 20px;
+    background: linear-gradient(90deg, #222, #444, #222);
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+/* --- LAMP FACE --- */
+.lamp-face {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eyes {
+    display: flex;
+    gap: 25px;
+}
+
+.eye {
+    width: 12px;
+    height: 2px;
+    background: #222;
+    transition: all 0.3s ease;
+}
+
+/* --- PULL CORD --- */
+.cord {
+    position: absolute;
+    top: 140px;
+    left: 60%;
+    z-index: 10;
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    height: 95px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.cord-line {
+    width: 2px;
+    background: #888;
+    flex-grow: 1;
+}
+
+.cord-handle {
+    width: 15px;
+    height: 15px;
+    background: #d35400;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.cord:active {
+    cursor: grabbing;
+}
+
+/* --- LIGHT BEAM --- */
+.light-beam {
+    position: absolute;
+    top: 140px; 
+    left: 51%;
+    transform: translateX(-50%);
+    width: 279px;
+    height: 250px;
+    background: radial-gradient(ellipse at top, var(--theme-color-glow) 0%, transparent 70%);
+    clip-path: polygon(25% 0%, 72.5% 0%, 100% 100%, 0% 100%);
+    filter: blur(15px);
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+/* --- FORM STYLING --- */
+.login-wrapper {
+    width: 500px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--theme-color-glow);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 -10px 30px var(--theme-color-glow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h2 {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+input {
+    padding: 15px;
+    border-radius: 10px;
+    background: #252525;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--theme-color-glow); 
+}
+
+input:focus {
+    background: #2c2c2c;
+    border-color: var(--theme-color);
+    box-shadow: 0 0 10px var(--theme-color-glow);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+button {
+    padding: 15px;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    background: var(--theme-color); 
+}
+
+button:hover {
+    background: #fff; 
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--theme-color-glow);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.forgot-pass {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.forgot-pass:hover {
+    color: white;
+}
+
+/* --- ACTIVE STATES (ON) --- */
+body.on .lamp-shade {
+    background: linear-gradient(90deg, var(--theme-color) 0%, #FFFFFF 50%, var(--theme-color) 100%);
+    box-shadow: 0 0 30px var(--theme-color-glow);
+}
+
+body.on .lamp-shade::after {
+    background: #FFFFFF;
+    box-shadow: 0 0 20px var(--theme-color);
+}
+
+body.on .eye {
+    height: 15px;
+    border-radius: 50%;
+    background: #333;
+}
+
+body.on .light-beam {
+    opacity: 1;
+}
+
+body.on .login-wrapper {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+/* --- FACE INTERACTIONS --- */
+body.on .eye.looking {
+    transform: translateX(12px);
+}
+
+body.on .eye.secret {
+    height: 2px;
+    border-radius: 0;
+    transform: scaleX(1.2);
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 850px) {
+    .container {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 50px;
+    }
+
+    .lamp-wrapper {
+        left: 0;
+        margin-bottom: -80px;
+        z-index: 20;
+        transform: scale(0.9);
+    }
+
+    .light-beam {
+        height: 350px;
+        width: 300px;
+        top: 130px;
+    }
+
+    .login-wrapper {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 50px;
+        padding: 30px 20px;
+    }
+    
+    .cord {
+        left: 65%;
+    }
+}

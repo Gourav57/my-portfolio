@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Lamp Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="lamp-wrapper">
+            <div class="light-beam"></div>
+            
+            <div class="lamp">
+                <div class="lamp-shade">
+                    <div class="lamp-face">
+                        <div class="eyes">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                        </div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+                <div class="lamp-stand"></div>
+                <div class="lamp-base"></div>
+            </div>
+
+            <div class="cord" onclick="toggleLight()">
+                <div class="cord-line"></div>
+                <div class="cord-handle"></div>
+            </div>
+        </div>
+
+        <div class="login-wrapper">
+            <form>
+                <h2>Welcome Back</h2>
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" placeholder="Enter username">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter password">
+                </div>
+                <button type="button">Login</button>
+                <a href="#" class="forgot-pass">Forgot Password?</a>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
